@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "RecycleNow",
+    "slug": "RecycleNow",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "RecycleNow"
+}
