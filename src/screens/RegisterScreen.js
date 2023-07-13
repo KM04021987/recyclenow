@@ -3,16 +3,20 @@ import {View, Text, TouchableOpacity, Platform, StyleSheet} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
+import Spinner from 'react-native-loading-spinner-overlay';
+import {AuthContext} from '../navigation/AuthProvider';
+
 const RegisterScreen = ({navigation}) => {
   const [name, setName] = useState();
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
+  const {register, loading} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      
+      <Spinner visible={loading} />      
 
       <Text style={styles.text}>Register</Text>
 

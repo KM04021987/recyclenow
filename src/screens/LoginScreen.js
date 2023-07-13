@@ -11,13 +11,17 @@ import {
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
+import Spinner from 'react-native-loading-spinner-overlay';
+import {AuthContext} from '../navigation/AuthProvider';
+
 const LoginScreen = ({navigation}) => {
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
-
+  const {loading, login} = useContext(AuthContext);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Spinner visible={loading} />
       <Image
         source={require('../assets/Logo.png')}
         style={styles.logo}

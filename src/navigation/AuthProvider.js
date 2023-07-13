@@ -1,22 +1,21 @@
 import axios from 'axios';
-import React, {createContext, useEffect, useState} from 'react';
-import {BASE_URL} from './../config';
+import React, {createContext, useEffect, useState} from 'react';  
 import AsyncStorage from '@react-native-async-storage/async-storage';
+const BASE_URL = 'http://10.0.2.2:8080';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
-  const register = (name, email, password) => {
+  const register = (name, phone, password) => {
     setLoading(true);
-
     axios
       .post(`${BASE_URL}/register`, {
         name,
-        email,
+        phone,
         password,
       })
       .then(res => {
@@ -30,11 +29,10 @@ export const AuthProvider = ({children}) => {
       });
   };
 
-  const login = (email, password) => {
+  const login = (phone, password) => {
     setLoading(true);
-
     axios
-      .post(`${BASE_URL}/login`, {email, password})
+      .post(`${BASE_URL}/login`, {phone, password})
       .then(res => {
         let user = res.data;
         setUser(user);
@@ -59,9 +57,8 @@ export const AuthProvider = ({children}) => {
         },
       )
       .then(res => {
-        console.log(res.data);
         AsyncStorage.removeItem('user');
-        setUser({});
+        setUser(null);
         setLoading(false);
       })
       .catch(e => {
@@ -72,7 +69,6 @@ export const AuthProvider = ({children}) => {
 
   const isLoggedIn = async () => {
     setSplashLoading(true);
-
     let user = await AsyncStorage.getItem('user');
     user = JSON.parse(user);
 
