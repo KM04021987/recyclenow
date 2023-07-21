@@ -29,6 +29,8 @@ const LoginScreen = ({navigation}) => {
       <Text style={styles.text}>Recycle Now</Text>
       <Text style={styles.text1}>A smart recycling system to resolve landfill problem</Text>
 
+      <Text style={styles.text2}>Login</Text>
+
       <FormInput
         labelValue={phone}
         onChangeText={(userPhone) => setPhone(userPhone)}
@@ -57,13 +59,17 @@ const LoginScreen = ({navigation}) => {
       </TouchableOpacity>
 
 
-      <TouchableOpacity
-        style={styles.forgotButton}
-        onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.navButtonText}>
-          Don't have an acount? Register
-        </Text>
-      </TouchableOpacity>
+      <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: 30,
+          }}>
+          <Text style={{fontSize: 18}}>Don't have an acount?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={{color: 'blue', fontWeight: '600', fontSize: 18}}> Register</Text>
+          </TouchableOpacity>
+        </View>
     </ScrollView>
   );
 };
@@ -78,8 +84,8 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   logo: {
-    height: 150,
-    width: 150,
+    height: 120,
+    width: 120,
     resizeMode: 'cover',
   },
   text: {
@@ -93,13 +99,19 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     color: '#051d5f',
   },
+  text2: {
+    fontFamily: 'Kufam-SemiBoldItalic',
+    fontSize: 24,
+    marginBottom: 10,
+    color: 'black',
+  },
   forgotButton: {
     marginVertical: 35,
   },
   navButtonText: {
     fontSize: 18,
-    fontWeight: '500',
-    color: '#2e64e5',
+    fontWeight: '700',
+    color: 'blue',
     fontFamily: 'Lato-Regular',
   },
 });

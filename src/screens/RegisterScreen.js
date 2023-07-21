@@ -7,7 +7,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import {AuthContext} from '../navigation/AuthProvider';
 
 const RegisterScreen = ({navigation}) => {
-  const [name, setName] = useState();
+  const [fullname, setName] = useState();
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
@@ -21,7 +21,7 @@ const RegisterScreen = ({navigation}) => {
       <Text style={styles.text}>Register</Text>
 
       <FormInput
-        labelValue={name}
+        labelValue={fullname}
         onChangeText={(userName) => setName(userName)}
         placeholderText="Full Name"
         iconType="user"
@@ -57,7 +57,7 @@ const RegisterScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Register"
-        onPress={() => register(name, phone, password)}
+        onPress={() => register(fullname, phone, password)}
       />
 
       <View style={styles.textPrivate}>
@@ -75,11 +75,17 @@ const RegisterScreen = ({navigation}) => {
         </Text>
       </View>
 
-      <TouchableOpacity
-        style={styles.navButton}
-        onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.navButtonText}>Have an account? Sign In</Text>
-      </TouchableOpacity>
+      <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: 30,
+          }}>
+          <Text style={{fontSize: 18}}>Already registered?</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={{color: 'blue', fontWeight: '600', fontSize: 18}}> Login</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 };
@@ -96,9 +102,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Kufam-SemiBoldItalic',
-    fontSize: 28,
+    fontSize: 24,
     marginBottom: 10,
-    color: '#051d5f',
+    color: 'black',
   },
   navButton: {
     marginTop: 15,

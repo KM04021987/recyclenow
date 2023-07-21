@@ -10,11 +10,11 @@ export const AuthProvider = ({children}) => {
   const [loading, setLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
-  const register = (name, phone, password) => {
+  const register = (fullname, phone, password) => {
     setLoading(true);
     axios
       .post(`${BASE_URL}/register`, {
-        name,
+        fullname,
         phone,
         password,
       })
