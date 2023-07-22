@@ -65,9 +65,9 @@ const LoginScreen = ({navigation}) => {
             justifyContent: 'center',
             marginBottom: 30,
           }}>
-          <Text style={{fontSize: 18}}>Don't have an acount?</Text>
+          <Text style={{fontSize: 17}}>Don't have an acount?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-            <Text style={{color: 'blue', fontWeight: '600', fontSize: 18}}> Register</Text>
+            <Text style={{color: 'blue', fontWeight: '500', fontSize: 17}}> Register</Text>
           </TouchableOpacity>
         </View>
     </ScrollView>
@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     marginVertical: 35,
   },
   navButtonText: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 17,
+    fontWeight: '600',
     color: 'blue',
     fontFamily: 'Lato-Regular',
   },

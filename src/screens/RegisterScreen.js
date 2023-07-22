@@ -81,9 +81,9 @@ const RegisterScreen = ({navigation}) => {
             justifyContent: 'center',
             marginBottom: 30,
           }}>
-          <Text style={{fontSize: 18}}>Already registered?</Text>
+          <Text style={{fontSize: 17}}>Already registered?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{color: 'blue', fontWeight: '600', fontSize: 18}}> Login</Text>
+            <Text style={{color: 'blue', fontWeight: '600', fontSize: 17}}> Login</Text>
           </TouchableOpacity>
         </View>
     </View>
