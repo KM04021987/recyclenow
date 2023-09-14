@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {View} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import RegisterScreen from '../screens/RegisterScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
@@ -24,7 +24,7 @@ const AuthStack = () => {
         setIsFirstLaunch(false);
       }
     }); // Add some error handling, also you can simply do setIsFirstLaunch(null)
-  
+
   }, []);
 
   if (isFirstLaunch === null) {
@@ -40,17 +40,17 @@ const AuthStack = () => {
       <Stack.Screen
         name="Onboarding"
         component={OnboardingScreen}
-        options={{header: () => null}}
+        options={{ header: () => null }}
       />
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={{header: () => null}}
+        options={{ header: () => null }}
       />
       <Stack.Screen
         name="Register"
         component={RegisterScreen}
-        options={({navigation}) => ({
+        options={({ navigation }) => ({
           title: '',
           headerStyle: {
             backgroundColor: '#f9fafd',
@@ -58,8 +58,8 @@ const AuthStack = () => {
             elevation: 0,
           },
           headerLeft: () => (
-            <View style={{marginLeft: 10}}>
-              <FontAwesome.Button 
+            <View style={{ marginLeft: 10 }}>
+              <FontAwesome.Button
                 name="chevron-left"
                 size={25}
                 backgroundColor="#f9fafd"

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -10,21 +10,21 @@ import {
 } from 'react-native';
 import FormButton from '../components/FormButton';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {AuthContext} from '../navigation/AuthProvider';
+import { AuthContext } from '../navigation/AuthProvider';
 
 
-const HomeScreen = ({navigation}) => {
-  const {logout, loading} = useContext(AuthContext);
+const HomeScreen = ({ navigation }) => {
+  const { logout, loading } = useContext(AuthContext);
 
 
   return (
     <ScrollView>
       <Spinner visible={loading} />
-      <Text> Home </Text>  
+      <Text> Home </Text>
       <FormButton
         buttonTitle="Logout"
         onPress={() => logout()}
-      /> 
+      />
     </ScrollView>
   );
 };
