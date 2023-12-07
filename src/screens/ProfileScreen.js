@@ -13,7 +13,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { AuthContext } from '../navigation/AuthProvider';
 
 
-const HomeScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   const { logout, loading } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
 
@@ -29,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   text: {

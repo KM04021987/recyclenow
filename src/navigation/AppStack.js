@@ -1,40 +1,68 @@
-import React, { useContext } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from '../screens/HomeScreen';
-import { AuthContext } from './AuthProvider';
-
+import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
+const HomeStack = ({navigation}) => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Dashboard"
+      component={HomeScreen}
+      options={{headerShown: false}}
+    />
+  </Stack.Navigator>
+);
+
+
+const ProfileStack = ({navigation}) => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="userProfile"
+      component={ProfileScreen}
+      options={{
+        headerShown: false,
+      }}
+    />
+  </Stack.Navigator>
+);
 
 const AppStack = () => {
-  const { usertype, setUserType } = useContext(AuthContext);
-  let routeName;
-
-  switch (usertype) {
-    case 'D':
-      routeName = 'Home'
-      break
-    case 'R':
-      routeName = 'Home'
-      break
-    case ' ':
-    case '':
-    default:
-      console.log(`Nothing`);
-      break
-  }
-
   return (
-    <Stack.Navigator initialRouteName={routeName}>
-      <Stack.Screen
+    <Tab.Navigator>
+      <Tab.Screen
         name="Home"
-        component={HomeScreen}
-        options={{ header: () => null }}
+        component={HomeStack}
+        options={({route}) => ({
+          headerShown: false,
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons
+              name="home-outline"
+              color={color}
+              size={size}
+            />
+          ),
+        })}
       />
-    </Stack.Navigator>
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStack}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name="person-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
