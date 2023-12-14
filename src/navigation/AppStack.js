@@ -8,6 +8,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import NewPickupScreen from '../screens/NewPickupScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,6 +20,20 @@ const HomeStack = ({navigation}) => (
       name="Dashboard"
       component={HomeScreen}
       options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="NewPickup"
+      component={NewPickupScreen}
+      options={{
+        headerTitle: 'New Pickup',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
     />
   </Stack.Navigator>
 );
@@ -30,6 +46,20 @@ const ProfileStack = ({navigation}) => (
       component={ProfileScreen}
       options={{
         headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="EditProfile"
+      component={EditProfileScreen}
+      options={{
+        headerTitle: 'Edit Profile',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
       }}
     />
   </Stack.Navigator>

@@ -21,6 +21,13 @@ const ProfileScreen = ({ navigation }) => {
     <ScrollView>
       <Spinner visible={loading} />
       <Text style={styles.text}> Welcome, {user.user.FULLNAME}! </Text> 
+      <TouchableOpacity
+        style={styles.userBtn}
+        onPress={() => {
+          navigation.navigate('EditProfile');
+        }}>
+        <Text style={styles.userBtnTxt}>Edit Profile</Text>
+      </TouchableOpacity>
       <FormButton
         buttonTitle="Logout"
         onPress={() => logout()}
@@ -38,5 +45,18 @@ const styles = StyleSheet.create({
     color: '#051d5f',
     marginTop: 20,
     marginLeft: 10,
+  },
+  userBtn: {
+    borderColor: '#2e64e5',
+    marginTop: 25,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderRadius: 3,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    marginHorizontal: 15,
+  },
+  userBtnTxt: {
+    color: '#2e64e5',
   },
 });

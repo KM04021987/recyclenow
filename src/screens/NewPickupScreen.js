@@ -13,7 +13,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { AuthContext } from '../navigation/AuthProvider';
 
 
-const HomeScreen = ({ navigation }) => {
+const NewPickupScreen = ({ navigation }) => {
   const { logout, loading } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
 
@@ -21,13 +21,6 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView>
       <Spinner visible={loading} />
       <Text style={styles.text}> Welcome, {user.user.FULLNAME}! </Text> 
-      <TouchableOpacity
-        style={styles.userBtn}
-        onPress={() => {
-          navigation.navigate('NewPickup');
-        }}>
-        <Text style={styles.userBtnTxt}>Create a New Pickup</Text>
-      </TouchableOpacity>
       <FormButton
         buttonTitle="Logout"
         onPress={() => logout()}
@@ -36,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default NewPickupScreen;
 
 const styles = StyleSheet.create({
   text: {
@@ -45,18 +38,5 @@ const styles = StyleSheet.create({
     color: '#051d5f',
     marginTop: 20,
     marginLeft: 10,
-  },
-  userBtn: {
-    borderColor: '#2e64e5',
-    marginTop: 25,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderRadius: 3,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    marginHorizontal: 15,
-  },
-  userBtnTxt: {
-    color: '#2e64e5',
   },
 });
